@@ -1,0 +1,235 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+     font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+body {
+    background-color: #0a1610;
+    color: #222;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: lightgreen;
+    padding: 14px 0;
+    text-align: right;
+    z-index: 1000;
+    
+}
+
+nav a {
+    color:black;
+    text-decoration: none;
+    margin: 0 15px;
+    font-weight: bold;
+}
+
+
+
+
+#hero {
+    background: linear-gradient(135deg,black);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 20px;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 40px; /* space between image and text */
+}
+
+
+.hero-img {
+    width: ;
+    height: 400px;
+    /* padding-out:100px; */
+    margin-right:100px;
+    object-fit: contain;
+    border-radius: 100%; 
+    /* border: 4px solid black; */
+}
+
+
+.hero-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 8px;
+    font-style: italic;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    color: white;
+}
+
+.hero-text p {
+    font-size: 1.1rem;
+    color:white;
+        font-style: italic;
+     font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+
+  
+.section-card {
+    background-color:black;
+    border-radius: 12px;
+    padding: 40px 30px;
+    margin: 40px 0;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+     color:white;
+   
+}
+
+.section-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+}
+
+.section-card h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #0f172a;
+    border-left: 4px solid lightgreen;
+    padding-left: 12px;
+    color:rgb(144, 238, 144);
+}
+
+.section-card p {
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    color:white;
+}
+
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.skill-card {
+    background-color: #f8fafc;
+    border-radius: 12px;
+    padding: 22px 15px;
+    text-align: center;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+     color:white;
+}
+
+.skill-card img {
+    width: 55px;
+    height: 55px;
+    margin-bottom: 12px;
+}
+
+.skill-card span {
+    display: block;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #0f172a;
+}
+
+.skill-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+
+
+
+/* .skill {
+    background-color: #e0e7ff;
+    border-radius: 8px;
+    padding: 18px;
+    text-align: center;
+    font-weight: bold;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+} */
+
+
+.project {
+    background-color: black;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border-left: 5px solid #4eedb5;
+    transition: transform 0.2s ease;
+     color:white;
+}
+
+.project:hover {
+    transform: scale(1.02);
+}
+
+
+
+form {
+    max-width: 500px;
+    margin: auto;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+}
+
+input:focus,
+textarea:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37,99,235,0.2);
+     color:black;
+}
+
+button {
+    background-color:lightgreen;
+    color:black;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+    background-color:green;
+    color:#0a1610;
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+footer {
+    background-color: #0f172a;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #93c5fd;
+    text-decoration: none;
+    margin: 0 8px;
+    font-weight: bold;
+}
+
+
