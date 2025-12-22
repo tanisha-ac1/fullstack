@@ -20,5 +20,7 @@ app.listen(PORT, () => {
 });
 const contactRoutes = require("./routes/contactRoutes");
 
+
+
 app.use("/api", contactRoutes);
 app.use(express.json());
