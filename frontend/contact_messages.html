@@ -34,35 +34,29 @@
 
   <script>
     const container = document.getElementById("messages");
+fetch("https://fullstack-2-i0fo.onrender.com/api/messages")
+  .then(res => res.json())
+  .then(result => {
+    const messages = result.data; // ✅ get array from backend
+    const container = document.getElementById("messages");
 
-    fetch("http://localhost:5000/api/messages")
-      .then(res => res.json())
-      .then(result => {
-        const messages = result.data; // 🔥 THIS IS THE FIX
+    container.innerHTML = ""; // clear container first
 
-        container.innerHTML = "";
+    messages.forEach(msg => {
+      const div = document.createElement("div");
+      div.innerHTML = `
+        <p><strong>Name:</strong> ${msg.name}</p>
+        <p><strong>Email:</strong> ${msg.email}</p>
+        <p><strong>Message:</strong> ${msg.message}</p>
+        <hr>
+      `;
+      container.appendChild(div);
+    });
+  })
+  .catch(() => {
+    container.innerHTML = "<p>Unable to load messages</p>";
+  });
 
-        if (!messages || messages.length === 0) {
-          container.innerHTML = "<p>No messages found</p>";
-          return;
-        }
-
-        messages.forEach(msg => {
-          const div = document.createElement("div");
-          div.className = "card";
-          div.innerHTML = `
-            <p><strong>Name:</strong> ${msg.name}</p>
-            <p><strong>Email:</strong> ${msg.email}</p>
-            <p><strong>Message:</strong> ${msg.message}</p>
-            <p><em>${new Date(msg.createdAt).toLocaleString()}</em></p>
-          `;
-          container.appendChild(div);
-        });
-      })
-      .catch(err => {
-        console.error(err);
-        container.innerHTML = "<p>Unable to load messages</p>";
-      });
   </script>
 
 </body>
