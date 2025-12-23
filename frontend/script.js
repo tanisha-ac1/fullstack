@@ -1,60 +1,61 @@
+const API_BASE_URL =
+  window.location.hostname === "localhost"
+    ? "http://localhost:5000"
+    : "https://your-backend.onrender.com";
 
 // CONTACT FORM SUBMISSION
+const form = document.getElementById("contactForm");
+const status = document.getElementById("formStatus");
 
- const form = document.getElementById("contactForm");
- const status = document.getElementById("formStatus");
-
- form.addEventListener("submit", async (e) => {
+form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-   const name = document.getElementById("name").value;
-   const email = document.getElementById("email").value;
-   const message = document.getElementById("message").value;
+  const name = document.getElementById("name").value;
+  const email = document.getElementById("email").value;
+  const message = document.getElementById("message").value;
 
-   try {
-     const response = await fetch("http://localhost:5000/api/contact", {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({ name, email, message })
-});
+  try {
+    const response = await fetch(`${API_BASE_URL}/api/contact`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ name, email, message })
+    });
 
-if (!response.ok) {
-  throw new Error("Server error");
-}
+    if (!response.ok) throw new Error("Server error");
 
-const data = await response.json();
+    await response.json();
 
-status.innerText = "Message sent successfully";
-status.style.color = "lightgreen";
-form.reset();
+    status.innerText = "Message sent successfully";
+    status.style.color = "lightgreen";
+    form.reset();
 
   } catch (err) {
-     status.innerText = "Error sending message";
-     status.style.color = "red";
-}
+    status.innerText = "Error sending message";
+    status.style.color = "red";
+  }
 });
 
 // FETCH CONTACT MESSAGES
 const messagesContainer = document.getElementById("messages");
 
- if (messagesContainer) {
-   fetch("http://localhost:5000/api/messages")
-        .then(res => res.json())
-         .then(data => {
-            data.forEach(msg => {
-              const div = document.createElement("div");
-              div.innerHTML = `
-                 <p><strong>Name:</strong> ${msg.name}</p>
-                     <p><strong>Email:</strong> ${msg.email}</p>
-                 <p><strong>Message:</strong> ${msg.message}</p>
-                     <hr>
-              `;
-               messagesContainer.appendChild(div);
-           });
-        })
-        .catch(() => {
-           messagesContainer.innerHTML = "<p>Unable to load messages</p>";
-         });
+if (messagesContainer) {
+  fetch(`${API_BASE_URL}/api/messages`)
+    .then(res => res.json())
+    .then(data => {
+      data.forEach(msg => {
+        const div = document.createElement("div");
+        div.innerHTML = `
+          <p><strong>Name:</strong> ${msg.name}</p>
+          <p><strong>Email:</strong> ${msg.email}</p>
+          <p><strong>Message:</strong> ${msg.message}</p>
+          <hr>
+        `;
+        messagesContainer.appendChild(div);
+      });
+    })
+    .catch(() => {
+      messagesContainer.innerHTML = "<p>Unable to load messages</p>";
+    });
 }
 
 
@@ -195,5 +196,8 @@ gsap.from("#contact .section-card", {
   duration: 0.9,
   ease: "power3.out"
 });
+
+
+
 
 
