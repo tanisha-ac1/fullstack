@@ -1,7 +1,5 @@
-const API_BASE_URL =
-  window.location.hostname === "localhost"
-    ? "http://localhost:5000"
-    : "https://your-backend.onrender.com";
+const API_BASE_URL = "https://fullstack-2-i0fo.onrender.com";
+
 
 // CONTACT FORM SUBMISSION
 const form = document.getElementById("contactForm");
